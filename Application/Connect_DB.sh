@@ -38,37 +38,37 @@ case $choice in
      Create_Table )
      echo "
     creating table .."
-    source ../../Application/create_Table.sh
+    create_Table.sh
     ;;
     List_Table )
      echo "
     listing table .."
-      ../../Application/list_Tables.sh
+      list_Tables.sh
     ;;
     Drop_table)
      echo "
     Droping table .."
-       ../../Application/drop_Table.sh
+       drop_Table.sh
     ;;
     Insert_IN_Table)
      echo "
     insert into table .."
-       ../../Application/insert_Into_Table.sh
+       insert_Into_Table.sh
     ;;
     Select_from_Table)
      echo "
      select from table .."
-       ../../Application/select_From_Table.sh
+       select_From_Table.sh
     ;;
     Delete_From_Table)
      echo "
      delete from table .."
-       ../../Application/delete_From_Table.sh
+       delete_From_Table.sh
     ;;
     UpDate_From_Table)
      echo "
      update in table .."
-       ../../Application/upDate_Table.sh
+       upDate_Table.sh
     ;;
     esac
     done
