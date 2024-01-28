@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cd ../Data
+cd  ../Data
 
 PS3=" Type The dataBase Number you want to drop ... "
 
