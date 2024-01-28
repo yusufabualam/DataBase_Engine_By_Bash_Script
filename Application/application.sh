@@ -1,21 +1,21 @@
 #!/usr/bin/bash
 
-select menu in Create_DB List_DB Connect_DB Drop_DB Exit
+select menu in Create_dataBase List_dataBase Connect_dataBase Drop_dataBase Exit_The_Menu
 do
 case $menu in 
 Create_DB )
-   ./Create_DB.sh
+    ./Create_DB.sh
     ;;
-List_DB )
+List_dataBase )
     ./List_DB.sh
     ;;
-Connect_DB )
+Connect_dataBase )
     ./Connect_DB.sh
     ;;
-Drop_DB )
+Drop_dataBase )
     ./Drop_DB.sh
     ;;
-Exit )
+Exit_The_Menu )
     echo " -------- Exiting -------- "
     break
     ;;
