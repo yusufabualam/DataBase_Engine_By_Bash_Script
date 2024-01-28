@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-select menu in Create_dataBase List_dataBase Connect_dataBase Drop_dataBase Exit_The_Menu
+select menu in Create_DB List_dataBase Connect_dataBase Drop_dataBase Exit_The_Menu
 do
 case $menu in 
 Create_DB )

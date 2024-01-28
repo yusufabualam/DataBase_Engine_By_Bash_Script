@@ -1,0 +1,1 @@
+echo "insert into table"

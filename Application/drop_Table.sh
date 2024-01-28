@@ -1,0 +1,1 @@
+echo "drop table"
