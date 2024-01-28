@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cd  ./DataBase_Engine_By_Bash_Script
+cd  ../Data
 
 
 while true 
@@ -14,20 +14,23 @@ echo "the name canot be empty"
 continue;;
 *[[:space:]]  | *[[:space:]]* | [[:space:]]*) 
 echo  "the name can not have spaces"
-continue ;;
+continue 
+    ;;
 
 [0-9]*)
 echo "the name can not contain integers"
-continue;;
-*[a-zA-Z_]*[a-zA-Z_] | [a-zA-z_] )
-if (find $db_Name 'ls -F | grep /' &> /dev/null 2>&1)
-then
-echo "already existing database"
 continue
- else
-mkdir $db_Name
-break
-fi ;;
+    ;;
+*[a-zA-Z_]*[a-zA-Z_] | [a-zA-z_] )
+    if (find $db_Name 'ls -F | grep /' &> /dev/null 2>&1)
+    then
+        echo "already existing database"
+        continue
+    else
+        mkdir $db_Name
+        break
+    fi 
+    ;;
 *) 
 echo "please ,write a valid name"  
 continue;;
