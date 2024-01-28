@@ -29,7 +29,7 @@ mkdir $db_Name
 break
 fi ;;
 *) 
-echo "write a valid name"
+echo "please ,write a valid name"  
 continue;;
 
 esac
