@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-PS3=$'\n\e[33m    select valid choice to connect to database >> \n \e[0m'
+PS3=$'\n\e[35m    Select A Valid Choice  >> \n \e[0m'
 
 echo -e "\n\x1b[1;32m ---------Select DataBase To Connect With------------ \n\x1b[0m"
 
@@ -12,13 +12,20 @@ array=( $(ls -F ../Data | tr '/' ' ') )
 
 
 
+
+
 select choice in ${array[*]}
 do
-  if ! [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+ 
+    if [ "$REPLY" = "0" ]; then
+       echo -e "\n\e[31m Enter A Valid Number \n\e[0m"
+        exit 0
+
+  elif ! [[ "$REPLY" =~ ^[0-9]+$ ]]; then
         echo -e " \n\x1b[1;36m Please enter a valid numeric choice.\n\x1b[0m"
         continue
     elif [ "$REPLY" -gt "${#array[@]}" ]; then
-        echo -e " \n\x1b[1;36m $REPLY Your Input Is Not Included In The  DataBase \n\x1b[0m"
+        echo -e " \n\x1b[1;31m $REPLY Your Input Is Not Included In The  DataBase \n\x1b[0m"
         continue
     else
 cd ../Data/${array[${REPLY}-1]}

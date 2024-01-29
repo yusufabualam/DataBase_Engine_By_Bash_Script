@@ -6,7 +6,7 @@ while true;
  do
     echo -e "\n\e[34m ------Write A Valid  Name of The Database or Zero (0) to Exit-------\n\e[0m" 
     read -r db_Name
-if [ "$db_Name" = "0" ] || [ "$db_Name" = "Zero" ] || [ "$db_Name" = "zero" ]; then
+if [ "$db_Name" = "0" ] ||  [ "$db_Name" = "zero" ]; then
     echo -e "\n\e[31m You are Exiting without creating a Database \e[0m"
     exit 0
 fi
