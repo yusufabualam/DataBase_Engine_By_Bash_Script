@@ -15,25 +15,21 @@
  # Check an empty input 
  '' )
  echo " The Table Name Cannot be Empty "
- echo " Please Insert another name .... "
  continue
     ;;
 # Check the spaces 
 *[[:space:]] | *[[:space:]]* | [[:space:]]* )
  echo " The Table Name Cannot have spaces "
- echo " Please Insert another name .... "
  continue
     ;;
 # Checking as it not begins with numbers
 [0-9]* )
  echo " The Table Name Cannot starts with numbers "
- echo " Please Insert another name .... "
  continue
     ;;
 # Check the special character
 *[[:punct:]] | *[[:punct:]]* | [[:punct:]]* )
  echo " The Table Name Cannot have special character "
- echo " Please Insert another name .... "
  continue
     ;;
 *[a-zA-Z_]*[a-zA-Z_] | [a-zA-Z] )
@@ -117,7 +113,7 @@ do
             else
                 if [ $i -eq 2 ] 
                 then 
-                    row_name+="id:"$col_name:
+                    row_name+="id(pK):"$col_name:
                 else 
                     row_name+=$col_name:
                 fi
@@ -135,11 +131,15 @@ done
 # Insert data type
 echo $row_name >> $table_name
 echo " Insert the Data Type of Columns Between String or Integer"
-
-PS3=" Type your choice: "
+echo "Note The First Column will be id(pK) choose integer as type data"
+PS3=" Type your choice for the Type of Data: "
 
 for ((i=1;i<=$col_num;i++))
 do
+if [ $i -eq 1 ] 
+then 
+    row_type+="integer:"$row_type:
+else 
 select choice in String Integer
 do 
 case $choice in
@@ -159,6 +159,7 @@ continue
 ;;
 esac
 done
+fi
 done
     echo $row_type >> $table_name
     echo "
