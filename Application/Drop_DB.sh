@@ -11,7 +11,7 @@ array=( $(ls -F | grep / | tr / " ") )
 select choice in "${array[@]}"; do
     if ! [[ "$REPLY" =~ ^[0-9]+$ ]]; then
         echo -e " \n\x1b[1;36m Please enter a valid numeric choice.\n\x1b[0m"
-        continue
+        continue3
     elif [ "$REPLY" -gt "${#array[@]}" ]; then
         echo -e " \n\x1b[1;36m $REPLY Your Input Is Not Included In The  DataBase \n\x1b[0m"
         continue

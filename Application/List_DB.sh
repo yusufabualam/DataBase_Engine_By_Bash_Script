@@ -2,7 +2,7 @@
 
 #!/bin/bash
 
-echo -e "\x1b[1;33m --------  the Existing Database -------- \x1b[0m"
+echo -e "\n\x1b[1;33m --------  the Existing Database -------- \x1b[0m\n"
 
 cd ../Data
 

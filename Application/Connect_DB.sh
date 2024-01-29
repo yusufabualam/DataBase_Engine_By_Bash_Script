@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 
-#!/usr/bin/bash
+PS3=$'\n\e[33m    select valid choice to connect to database >> \n \e[0m'
 
-echo -e "\x1b[1;32m ---------Select DataBase To Connect With------------ \x1b[0m"
+echo -e "\n\x1b[1;32m ---------Select DataBase To Connect With------------ \n\x1b[0m"
 
 cd ../Data
 
@@ -31,7 +31,7 @@ done
 echo
 
 Ps3="Type your choice number "
-select choice in Create_Table  List_Table Drop_table Insert_IN_Table Select_from_Table Delete_From_Table UpDate_From_Table
+select choice in Create_Table  List_Table Drop_table Insert_IN_Table Select_from_Table Delete_From_Table UpDate_From_Table 
 do
 case $choice in 
      Create_Table )
@@ -68,6 +68,10 @@ case $choice in
      echo "
      update in table .."
        upDate_Table.sh
+    ;;
+   
+       *)
+     echo -e "\n\e[31m Invalid Choice \e[0m\n"
     ;;
     esac
     done
