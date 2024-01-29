@@ -2,15 +2,12 @@
 
 #!/usr/bin/bash
 
+echo -e "\x1b[1;32m ---------Select DataBase To Connect With------------ \x1b[0m"
 
-Ps3= "Type your Db to Connect With"
-
-echo 
-echo " ---------Select your DBnumber from the menu <----"
-echo 
 cd ../Data
 
 # array=('ls -F | grep/ | tr / " "')
+
 array=( $(ls -F ../Data | tr '/' ' ') )
 
 
@@ -20,11 +17,12 @@ do
   if [ $REPLY -gt ${#array[*]} ] 
   then 
   echo "
-   $REPLY not on the menu "
+   $REPLY Not A Database Name"
    continue
 else 
 cd ../Data/${array[${REPLY}-1]}
-echo " .... you are connected to  ${array[${REPLY}-1]} DB ..."
+echo -e "\n\x1b[1;34m.... You Are In ${choice} Database...\x1b[0m"
+
 echo 
 break
 fi
