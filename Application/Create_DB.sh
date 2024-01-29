@@ -20,9 +20,7 @@ fi
             echo -e "\n\e[31m ------The Name Can't Contain Any Space -------\n \e[0m"
             continue ;;
      
-        *[[:space:]]*)
-            echo -e "\n\e[31m ------The Name Can't Start with Any Space -------\n \e[0m"
-            ;;
+    
 
         [!a-zA-Z]*)
             echo -e "\n\e[31m ------The Name Can't Start with a Special Character -------\n \e[0m"
