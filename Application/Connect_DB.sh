@@ -14,12 +14,13 @@ array=( $(ls -F ../Data | tr '/' ' ') )
 
 select choice in ${array[*]}
 do
-  if [ $REPLY -gt ${#array[*]} ] 
-  then 
-  echo "
-   $REPLY Not A Database Name"
-   continue
-else 
+  if ! [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+        echo -e " \n\x1b[1;36m Please enter a valid numeric choice.\n\x1b[0m"
+        continue
+    elif [ "$REPLY" -gt "${#array[@]}" ]; then
+        echo -e " \n\x1b[1;36m $REPLY Your Input Is Not Included In The  DataBase \n\x1b[0m"
+        continue
+    else
 cd ../Data/${array[${REPLY}-1]}
 echo -e "\n\x1b[1;34m.... You Are In ${choice} Database...\x1b[0m"
 

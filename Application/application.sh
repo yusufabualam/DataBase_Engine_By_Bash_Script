@@ -1,11 +1,12 @@
 #!/usr/bin/bash
+PS3=" Welcome to the dataBase Menu, Please Enter your Choice >> "
 echo -e "\n\\e[31m<<<<<<<<<<<<<<< Welcome To Our Project >>>>>>>>>>>>>>>>>>\n\e[0m"
 
 echo -e "\e[34m.............. What Do You Want TO Do .....................\n\n\e[0m"
-select menu in Create_DB List_dataBase Connect_dataBase Drop_dataBase Exit_The_Menu
+select menu in Create_dataBase List_dataBase Connect_dataBase Drop_dataBase Exit_The_Menu
 do
 case $menu in 
-Create_DB )
+Create_datBase )
     Create_DB.sh
     ;;
 List_dataBase )
