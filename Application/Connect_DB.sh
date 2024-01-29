@@ -30,7 +30,7 @@ done
 echo
 
 Ps3="Type your choice number "
-select choice in Create_Table  List_Table Drop_table Insert_IN_Table Select_from_Table Delete_From_Table UpDate_From_Table
+select choice in Create_Table  List_Table Drop_table Insert_IN_Table Select_from_Table Delete_From_Table UpDate_From_Table 
 do
 case $choice in 
      Create_Table )
