@@ -14,7 +14,7 @@ fi
 
     case $db_Name in
         '')
-            echo -e "\n\e[1;31m ------ The Name Cannot Be Empty -------\n \e[0m"
+            echo -e "\n\e[1;31m  The Name Cannot Be Empty \n \e[0m"
             continue;;
          *[[:space:]] | *[[:space:]]* | [[:space:]]*) 
             echo -e "\n\e[1;31m The Name Can't Contain Any Space \n \e[0m"
