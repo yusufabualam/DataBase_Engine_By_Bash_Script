@@ -8,16 +8,16 @@ select menu in Create_dataBase List_dataBase Connect_dataBase Drop_dataBase Exit
 do
 case $menu in 
 Create_dataBase )
-    Create_DB.sh
+    createDB.sh
     ;;
 List_dataBase )
-    ./List_DB.sh
+    ./listDB.sh
     ;;
 Connect_dataBase )
-    ./Connect_DB.sh
+    ./connectDB.sh
     ;;
 Drop_dataBase )
-    ./Drop_DB.sh
+    ./dropDB.sh
     ;;
 Exit_The_Menu )
   echo -e "\n\e[1;34m--------  Exiting ( I love Linux )-------\n\e[0m"
