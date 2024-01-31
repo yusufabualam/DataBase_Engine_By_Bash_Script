@@ -9,7 +9,7 @@
  do 
  read -p " Insert the Table you want to create .... "
  
- table_name=$REPLY
+
 
  case $table_name in 
  # Check an empty input 
