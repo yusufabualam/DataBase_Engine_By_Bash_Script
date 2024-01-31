@@ -31,42 +31,28 @@ done
 
 
 PS3=$'\n\e[1;33m What do you want to do with Selected Database >> \n \e[0m'
-select choice in Create_Table  List_Table Drop_table Insert_IN_Table Select_from_Table Delete_From_Table UpDate_From_Table Exit_From_Menu
+select choice in Create_Table List_Table Drop_Table Insert_Into_Table Select_From_Table Delete_From_Table Update_From_Table Exit_From_Menu
 do
 case $choice in 
      Create_Table )
-     echo "
-    creating table .."
-    createTable.sh
+      createTable.sh
     ;;
     List_Table )
-     echo "
-    listing table .."
       listTables.sh
     ;;
-    Drop_table)
-     echo "
-    Droping table .."
+    Drop_Table)
        dropTable.sh
     ;;
-    Insert_IN_Table)
-     echo "
-    insert into table .."
+    Insert_Into_Table)
        insertIntoTable.sh
     ;;
-    Select_from_Table)
-     echo "
-     select from table .."
+    Select_From_Table)
        selectFromTable.sh
     ;;
     Delete_From_Table)
-     echo "
-     delete from table .."
        deleteFromTable.sh
     ;;
-    UpDate_From_Table)
-     echo "
-     update in table .."
+    Update_From_Table)
        updateTable.sh
     ;;
     Exit_From_Menu )
