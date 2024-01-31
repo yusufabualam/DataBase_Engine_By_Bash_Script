@@ -8,6 +8,28 @@ cd ../Data
 
 # array=('ls -F | grep/ | tr / " "')
 
+
+ 
+ if [ -z "$(ls -F | grep /)" ]; then
+    echo -e "\x1b[1;31m No databases found.\x1b[0m"
+    
+   
+    read -p "Do you want to create a new database? (y/n): " answer
+    case "$answer" in
+        [yY])
+            
+            Create_DB.sh
+          
+            ;;
+        *)
+            echo "Exiting..."
+            ;;
+    esac
+
+
+else
+
+
 array=( $(ls -F ../Data | tr '/' ' ') )
 
 
@@ -85,7 +107,7 @@ case $choice in
     
 
     
-    
+    fi
     
 
 
