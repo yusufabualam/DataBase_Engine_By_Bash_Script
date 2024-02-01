@@ -5,23 +5,12 @@
  ls -s 
 
  # ---- Create Table Name ----
-<<<<<<< HEAD
  while true 
  do 
  read -p " Insert the Table you want to create .... "
  
 
-=======
-while true 
-do 
-    echo -e "\n\e[1;34m ------ Write A Valid  Name of The Table or Zero (0) to Exit -------\n\e[0m" 
-    read -r table_name
-if [ "$table_name" = "0" ] ||  [ "$table_name" = "zero" ]; then
-    echo -e "\n\e[1;34m You are Exiting without creating a Table \e[0m"
-    exit 0
-fi
->>>>>>> f0fdc38f496bc1791e804aa3be59fded21876993
-
+1
 valid_regex="^[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]$"
  
 # table_name=$REPLY
