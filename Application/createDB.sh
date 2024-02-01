@@ -19,6 +19,11 @@ fi
          *[[:space:]] | *[[:space:]]* | [[:space:]]*) 
             echo -e "\n\e[1;31m The Name Can't Contain Any Space \n \e[0m"
             continue ;;
+     
+        *[[:space:]]*)
+            echo -e "\n\e[31m ------The Name Can't Start with Any Space -------\n \e[0m"
+            ;;
+
         [!a-zA-Z]*)
             echo -e "\n\e[1;31m The Name Can't Start with a Special Character or Numbers \n \e[0m"
             continue
