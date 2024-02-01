@@ -46,38 +46,19 @@ done
 
 
 
-# Get the number of fields from the first row
-num_fields=$(head -1 "$table_name" | awk -F: '{print NF}')
+# ========== (1) let the user insert in the  the table    ========
 
-# Initialize an array to store primary key values
-declare -A primary_keys
+let num_fields=`head -1 $table_name | awk -F: '{print NF}'`
 
-# Loop through the fields starting from the third field
-for ((i=3; i<=$num_fields; i++))
+for ((i=1;i<$num_fields;i++))
 do
-    echo "Insert data for Field num $i"
-    read -p "Enter value for Field $i: " field
-
-    # Check if the primary key value is already used
-    while [ -n "${primary_keys["$field"]}" ]
-    do
-        echo "Error: Primary key must be unique. Value '$field' is already used."
-        read -p "Enter a different value for Field $i: " field
-    done
-
-    # Store the primary key value in the array
-    primary_keys["$field"]=1
-
-    # Append the field value to the row
-    row+="$field:"
+	
+	echo "insert filed num $i"
+	read field
+	#validate the field num
+	row+=$field:
 done
-
-# Remove the trailing colon from the row
-row=${row%:}
-
-# Append the row to the table file
-echo "$row" >> "$table_name"
-
-echo "Data inserted successfully."
+echo $row >> $table_name
+echo "you inserted your data successfully"
 
 cd - &> /dev/null 2>&1 
