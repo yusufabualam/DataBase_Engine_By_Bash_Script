@@ -36,6 +36,7 @@ do
                 esac
             else
                  echo -e "\n\e[1;32m .. You Selected ${array[${REPLY}-1]} Table...\n\e[0m"
+                 echo -e "\n\e[1;32m .. Note That  The Insertion Started From The Third RoW ...\n\e[0m"
                 table_name=${array[${REPLY}-1]}
                 break
             fi
@@ -59,6 +60,6 @@ do
 	row+=$field:
 done
 echo $row >> $table_name
-echo "you inserted your data successfully"
+echo -e "\n\e[1;32m .. You Inserted The Data Successfully ...\n\e[0m"
 
 cd - &> /dev/null 2>&1 

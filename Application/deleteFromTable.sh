@@ -1,66 +1,99 @@
 #!/usr/bin/bash
 
 # get table name
-echo "
------> Select your Table number from the menu <--------
-"
+echo  -e "\n\e[1;34m 
+-----> Select your Table number That You Want to Delete From  the Menu or Zero To Exit  <--------
+\e[0m"
 array=(`ls`)
-
-
-# echo ${#array[*]}
 
 select choice in  ${array[*]}
 do
-	if [ $REPLY -gt ${#array[*]} ]
-	then
-		echo "
-		$REPLY is not on the menuh
-		"
-		continue
-	else
+if [ "$REPLY" = "0" ]; then
+ echo -e "\n\e[1;34m You are Exiting without Deleting Anything \e[0m"
+exit 0
+ elif [ -z "$REPLY" ]; then
+ echo -e "\n\e[1;31m Enter Your Table Name !! \n \e[0m"
+continue
+ elif ! [[ "$REPLY" =~ ^[0-9]+$ ]]; then
+echo -e "\n\e[1;31m Enter  numeric option from the menu \n \e[0m"
+continue
+elif [ "$REPLY" -gt "${#array[@]}" ]; then
+  echo -e "\n\e[1;31m $REPLY is not on the menu \n \e[0m"
+ continue
+ else
+ echo -e "\n\e[1;36m... You selected ${array[${REPLY}-1]} Table...\n\e[0m"
+ table_name=${array[${REPLY}-1]}
 
-		echo "
-		... You selected ${array[${REPLY}-1]} Table...
-		"
-			table_name=${array[${REPLY}-1]} 
-		break 
-	fi
-done	
+# Display table content
+echo -e "\n\e[1;34m --- Content of The  $table_name  Table  --\n\e[0m"
+tput bold
+tput setaf 4 # Set text color to blue
+cat "$table_name"
+tput sgr0   # Reset text attributes
+
+break
+    fi
+done
 
 
-# check if table is exist
-if [[ -f $table_name ]] ;
-then
-select choice in Delete_All  Delete_Row
+
+
+
+
+echo -e "\n\e[1;34m --- What Do You Want To DO \n\e[0m" 
+if [[ -f "$table_name" ]]; then
+select choice in Delete_All Delete_Row
 do
-	case $choice in 
+case $choice in
+         
+Delete_All )
+echo -e "\n\e[1;34m --- Content of The  $table_name  Table  --\n\e[0m"
+tput bold
+tput setaf 4 # Set text color to blue
+cat "$table_name"
+tput sgr0   # Reset text attributes
+sed -i '/^[[:digit:]]/d' "$table_name"
+echo -e "\n\e[1;32m------all Row deleted successfully --\n\e[0m"
+echo -e "\n\e[1;34m --- Content of The  $table_name  Table  Become --\n\e[0m"
+tput bold
+ tput setaf 4 # Set text color to blue
+cat "$table_name"
+tput sgr0   # Reset text attributes
+;;
 
-		# if user select del all
-		Delete_All )
-			sed -i '/^[[:digit:]]/d' $table_name
-			echo "All Rows deleted successfully"
-			;;
+ Delete_Row )
 
-		# if user select del row
-		Delete_Row )
-		
-		# get the pk of row
-		read -p "input your id(PK) row: " pk
-		row=`awk -F':' ' {  if($1=='$pk')  print $0}' $table_name  `
-		# check the PK exist
-		if grep -Fxq "$row" "$table_name" > /dev/null;
-		then
-			sed -i '/'$row'/d' $table_name
-			echo "Row deleted successfully"
-		else
-			echo "id(PK) '$pk' dosent't exist please press 'enter' and write valid id"
-		fi
-			;;
+tput bold
+tput setaf 4 # Set text color to blue
+cat "$table_name"
+tput sgr0   # Reset text attributes
 
-		* ) echo chose a valid choice 
-			;;
-	esac 
-done	
+read -p "input your id(PK) row: " pk
+row=$(awk -F':' -v var="$pk" '$1==var { print $0 }' "$table_name")
+# check if the PK exists
+if grep -Fxq "$row" "$table_name" > /dev/null; then
+sed -i "/$row/d" "$table_name"
+ echo -e "\n\e[1;32m------Row deleted successfully --\n\e[0m"
+ echo -e "\n\e[1;34m --- Content of The  $table_name  Table  Become  --\n\e[0m"
+ tput bold
+tput setaf 4 # Set text color to blue
+cat "$table_name"
+tput sgr0   # Reset text attributes
+ else
+ echo "id(PK) '$pk' doesn't exist. Please enter a valid id."
+fi
+;;
+0)
+
+echo -e "\n\e[1;34m You are Exiting without Deleting Anything \e[0m"
+exit 0
+;;
+ * )
+   echo -e "\n\e[1;34m Choose A Valid Option !! \e[0m"
+ exit 0
+   ;;
+esac
+done
 else
-	echo "$table_name doesn't exist press enter to try again!!"
+echo "$table_name doesn't exist. Press enter to try again!!"
 fi
