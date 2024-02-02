@@ -1,0 +1,3 @@
+id(pK):name:category:price:
+integer:string:string:integer:
+1:tea:hot:25
