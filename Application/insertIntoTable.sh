@@ -47,19 +47,43 @@ done
 
 
 
+
+
+
+
+
+
 # ========== (1) let the user insert in the  the table    ========
 
-let num_fields=`head -1 $table_name | awk -F: '{print NF}'`
+num_fields=$(head -1 "$table_name" | awk -F: '{print NF}')
+row=""
 
-for ((i=1;i<$num_fields;i++))
+for ((i=1; i<=$num_fields; i++))
 do
-	
-	echo "insert filed num $i"
-	read field
-	#validate the field num
-	row+=$field:
+    # Special case for the first column
+    if [ $i -eq 1 ]; then
+        echo "Insert value for the first column (field number $i):"
+        read field
+        if field == cut 
+
+        # Check if the value already exists in the first column of previous rows
+        while grep -q "^$field:" "$table_name"; do
+            echo "Error: Value in the first column must be unique. Value '$field' already exists."
+            echo "Re-enter value for the first column (field number $i):"
+            read field
+        done
+
+    else
+        echo "Insert value for field number $i:"
+        read field
+    fi
+
+    # Append the field to the row
+    row+="$field:"
 done
-echo $row >> $table_name
+
+# Append the row to the table
+echo $row >> "$table_name"
 echo -e "\n\e[1;32m .. You Inserted The Data Successfully ...\n\e[0m"
 
-cd - &> /dev/null 2>&1 
+cd - &> /dev/null 2>&1

@@ -25,7 +25,7 @@ if [ -z "$(ls -F | grep /)" ]; then
     esac
 else
 
-    ls -F --color=auto --classify | grep / | sed 's/\//\x1b[1;32m\/\x1b[0m/'
+    ls -F  | grep / | tr / " " 
 fi
 
 cd - &> /dev/null

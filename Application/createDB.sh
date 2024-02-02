@@ -4,7 +4,7 @@ cd  ../Data
 
 while true;
  do
-    echo -e "\n\e[1;34m ------ Write A Valid  Name of The Table or Zero (0) to Exit -------\n\e[0m" 
+    echo -e "\n\e[1;34m ------ Write A Valid  Name of The Data Base or Zero (0) to Exit -------\n\e[0m" 
     read -r db_Name
 if [ "$db_Name" = "0" ] ||  [ "$db_Name" = "zero" ]; then
     echo -e "\n\e[1;34m You are Exiting without creating a Database \e[0m"
